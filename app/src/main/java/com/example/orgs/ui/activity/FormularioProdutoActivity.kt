@@ -29,13 +29,20 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
             val bindingFormularioImagem = FormularioImagemBinding.inflate(layoutInflater)
             bindingFormularioImagem.formularioImagemBotaoCarregar.setOnClickListener {
                 val url = bindingFormularioImagem.formularioImagemUrl.text.toString()
-                bindingFormularioImagem.formularioImagemImageview.load(url)
+                bindingFormularioImagem.formularioImagemImageview.load(url) {
+                    fallback(R.drawable.erro)
+                    error(R.drawable.erro)
+                }
             }
             AlertDialog.Builder(this)
                 .setView(bindingFormularioImagem.root)
                 .setPositiveButton("Confirmar") { _, _ ->
                     url = bindingFormularioImagem.formularioImagemUrl.text.toString()
-                    binding.activityFormularioProdutoImagem.load(url)
+
+                    binding.activityFormularioProdutoImagem.load(url) {
+                        fallback(R.drawable.erro)
+                        error(R.drawable.erro)
+                    }
                 }
                 .setNegativeButton("Cancelar") { _, _ ->
 

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.orgs.R
 import com.example.orgs.databinding.ProdutoItemBinding
+import com.example.orgs.extensions.tentaCarregarImage
 import com.example.orgs.model.Produto
 import java.math.BigDecimal
 import java.text.NumberFormat
@@ -39,10 +40,7 @@ class ListaProdutosAdapter(
 
             binding.imageView.visibility = visibilidade
 
-            binding.imageView.load(produto.imagem) {
-                fallback(R.drawable.erro)
-                error(R.drawable.erro)
-            }
+            binding.imageView.tentaCarregarImage(produto.imagem)
         }
 
         private fun formataParaMoedaBrasileira(valor: BigDecimal): String {

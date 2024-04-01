@@ -29,9 +29,6 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
         setContentView(binding.root)
         configuraRecyclerView()
         configuraFab()
-        FormularioImagemDialog(this).mostra { imagem ->
-            Log.i("ListaProdutosActivity", "onCreate: $imagem")
-        }
     }
 
     override fun onResume() {
